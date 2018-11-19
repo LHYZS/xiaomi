@@ -14,10 +14,6 @@
         <b-radio>记住我</b-radio>                   登陆遇到问题？<br><br>
         <button @click = "login"  style="height: 50px;width: 500px;background: cornflowerblue">登录</button><br>
       </b-form>
-
-    </b-tab>
-    <b-tab title="注册" >
-      <br>I'm the second tab content
     </b-tab>
   </b-tabs>
 </template>
