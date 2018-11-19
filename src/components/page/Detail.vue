@@ -54,7 +54,7 @@
         product: [
           {
             "id": 1,
-            "name": "华为note8",
+            "name": "华为",
             "bigPic": "https://res0.vmallres.com/pimages//frontLocation/content/1916639/1540539988858.png",
             "price": 888,
             "newPrice": 799,
@@ -126,8 +126,8 @@
         item.productNum = this.$store.state.productNum;
         console.log(item.productNum);
         this.$store.commit('addCar', item);
-        router.push({path: '/cart'});
-      }
+        this.$router.push({path: '/cart'});
+      },
     }
   }
 </script>
