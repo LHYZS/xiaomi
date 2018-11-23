@@ -144,7 +144,7 @@
     margin-right: 20px;
     width: 420px;
     height: 420px;
-    margin-left: 120px;
+    margin-left: 130px;
     margin-top: 50px;
   }
 

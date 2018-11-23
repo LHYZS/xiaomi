@@ -6,84 +6,80 @@
       <b-collapse is-nav id="nav_collapse">
         <b-navbar-nav>
 
-          <b-nav-item v-if="token===null">
-            <router-link to="/cart">首页</router-link>
+          <b-nav-item >
+            <router-link to="/index">首页</router-link>
           </b-nav-item>
 
-          <b-nav-item v-if="token===null">
-            <b-link href="https://www.miui.com/">华为官网</b-link>
+          <b-nav-item >
+            <b-link href="">华为官网</b-link>
           </b-nav-item>
 
-          <b-nav-item v-if="token===null">
-            <router-link to="https://www.miui.com">荣耀官网</router-link>
+          <b-nav-item >
+            <router-link to="/">荣耀官网</router-link>
           </b-nav-item>
 
-          <b-nav-item v-if="token===null">
-            <router-link to="https://iot.mi.com/new/index.html">花粉俱乐部</router-link>
+          <b-nav-item v-if="user===null">
+            <router-link to="/">花粉俱乐部</router-link>
           </b-nav-item>
 
-          <b-nav-item v-if="token===null">
-            <router-link to="https://i.mi.com/#/">帮助中心</router-link>
+          <b-nav-item>
+            <router-link to="/">帮助中心</router-link>
           </b-nav-item>
 
-          <b-nav-item v-if="token===null">
-            <router-link to="/index">V码(优购码)</router-link>
+          <b-nav-item>
+            <router-link to="/">V码(优购码)</router-link>
           </b-nav-item>
 
-          <b-nav-item v-if="token===null">
-            <router-link to="/download">企业购</router-link>
+          <b-nav-item>
+            <router-link to="/">企业购</router-link>
           </b-nav-item>
 
-          <b-nav-item v-if="token===null">
-            <router-link to="/download">Select Region</router-link>
+          <b-nav-item >
+            <router-link to="/">Select Region</router-link>
           </b-nav-item>
 
-          <b-nav-item v-if="token===null">
-            <router-link to="/download">下载APP</router-link>
+          <b-nav-item >
+            <router-link to="/">下载APP</router-link>
           </b-nav-item>
 
-          <b-nav-item v-if="token===null">
-            <router-link to="/download">更多精彩</router-link>
+          <b-nav-item >
+            <router-link to="/">更多精彩</router-link>
           </b-nav-item>
 
         </b-navbar-nav>
 
         <!-- Right aligned nav items -->
         <b-navbar-nav class="ml-auto">
-          <b-nav-item v-if="token===null">
+          <b-nav-item v-if="user===null">
             <router-link to="/login">请登陆</router-link>
           </b-nav-item>
-
-          <b-nav-item v-if="token===null">
-            <router-link to="/sign-up">注册</router-link>
-          </b-nav-item>
-
-          <b-nav-item v-if="token===null">
-            <router-link to="/sign-up">我的订单</router-link>
-          </b-nav-item>
-
-          <b-nav-item v-if="token===null">
-            <router-link to="/cart">购物车</router-link>
-          </b-nav-item>
-
-          <b-nav-item-dropdown right v-if="token!=null">
-            <!-- Using button-content slot -->
+          <b-nav-item-dropdown right v-if="user!=null">
             <b-dropdown-item>
               <router-link to="/user">
                 个人中心
               </router-link>
             </b-dropdown-item>
             <template slot="button-content">
-              <b-img rounded="circle" width="35" height="35" src="../static/img/101.jpg"/>
-
+              <b-img rounded="circle" width="35" height="35" src="/static/img/101.jpg"/>
             </template>
             <b-dropdown-item>
               <router-link to="/set">
                 设置
               </router-link>
             </b-dropdown-item>
-            <b-dropdown-item href="#">退出</b-dropdown-item>
+            <b-dropdown-item @click="logout">
+              退出
+            </b-dropdown-item>
           </b-nav-item-dropdown>
+
+          <b-nav-item>
+            <router-link to="/">我的订单</router-link>
+          </b-nav-item>
+
+          <b-nav-item >
+            <router-link to="/cart">购物车</router-link>
+          </b-nav-item>
+
         </b-navbar-nav>
 
       </b-collapse>
@@ -99,30 +95,30 @@
       </router-link>
 
       <b-collapse is-nav id="nav_collapse">
-        <b-navbar-nav>
+        <b-navbar-nav >
 
-          <b-nav-item v-if="token===null">
-            <router-link to="/index">手机</router-link>
+          <b-nav-item>
+            <router-link to="/index"><p>手机</p></router-link>
           </b-nav-item>
 
-          <b-nav-item v-if="token===null">
-            <router-link to="/download">笔记本电脑</router-link>
+          <b-nav-item >
+            <router-link to="/download"><p>笔记本电脑</p></router-link>
           </b-nav-item>
 
-          <b-nav-item v-if="token===null">
-            <router-link to="/index">平板&穿戴</router-link>
+          <b-nav-item >
+            <router-link to="/index"><p>平板&穿戴</p></router-link>
           </b-nav-item>
 
-          <b-nav-item v-if="token===null">
-            <router-link to="/download">智能家居</router-link>
+          <b-nav-item >
+            <router-link to="/download"><p>智能家居</p></router-link>
           </b-nav-item>
 
-          <b-nav-item v-if="token===null">
-            <router-link to="/index">配件</router-link>
+          <b-nav-item >
+            <router-link to="/index"><p>配件</p></router-link>
           </b-nav-item>
 
-          <b-nav-item v-if="token===null">
-            <router-link to="/download">荣耀专区</router-link>
+          <b-nav-item >
+            <router-link to="/download"><p>荣耀专区</p></router-link>
           </b-nav-item>
 
         </b-navbar-nav>
@@ -143,23 +139,14 @@
   export default {
     data() {
       return {
-        token: null,
-      }
-    },
-    computed: {
-      username() {
-        let username = localStorage.getItem('ms_username');
-        return username ? username : this.name;
+        user: JSON.parse(localStorage.getItem('loginUser'))
       }
     },
     methods: {
-      // 用户名下拉菜单选择事件
-      handleCommand(command) {
-        if (command == 'loginout') {
-          localStorage.removeItem('ms_username')
-          this.$router.push('/login');
-        }
-      },
+      logout() {
+        localStorage.removeItem('loginUser')
+        this.$router.go(0);
+      }
     }
   }
 </script>
@@ -172,8 +159,13 @@
   a {
     color: #b0b0b0;
   }
+
   .btn{
     margin-left: 800px;
   }
 
+  p{
+    color: black;
+    font-size: 17px;
+  }
 </style>

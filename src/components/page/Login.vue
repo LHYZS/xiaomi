@@ -1,53 +1,76 @@
 <template>
-  <b-tabs>
-    <b-tab title="登陆">
-      <b-form ref = "AccountForm" :model = "AccountForm"   rules = "rules" >
-        <br><br>
-        <div style="width: 500px;height: 50px">
-          <b-form-item  prop = "user" >
-            <b-form-input type="text" placeholder="账号"></b-form-input>
-          </b-form-item>
-          <b-form-item  prop = "password">
-            <b-form-input type="text" placeholder="密码"></b-form-input>
-          </b-form-item>
-        </div><br><br>
-        <b-radio>记住我</b-radio>                   登陆遇到问题？<br><br>
-        <button @click = "login"  style="height: 50px;width: 500px;background: cornflowerblue">登录</button><br>
-      </b-form>
-    </b-tab>
-  </b-tabs>
+  <div class="bg">
+    <div class="main">
+      <b-form-group id="exampleInputGroup1"
+                    label="邮箱"
+                    label-for="exampleInput1">
+        <b-form-input id="exampleInput1"
+                      type="email"
+                      v-model="email"
+                      required
+                      placeholder="请输入邮箱">
+        </b-form-input>
+      </b-form-group>
+
+      <b-form-group id="exampleInputGroup2"
+                    label="密码"
+                    label-for="exampleInput2">
+        <b-form-input id="exampleInput2"
+                      type="password"
+                      v-model="password"
+                      required
+                      placeholder="请输入密码">
+        </b-form-input>
+      </b-form-group>
+      <b-button type="button" variant="primary" class="sign-in-btn" @click="onClick">登陆</b-button>
+    </div>
+  </div>
 </template>
 
 <script>
   export default {
     data() {
       return {
-        AccountForm : {
-          username:'admin',
-          password:'123456',
-        },
-        rules: {
-          username :[
-            {required: true, message: '请输入账号',trigger: 'blur'},
-            // { validator: validaePass }
-          ],
-          password: [
-            {required: true,message: '请输入密码', trigger: 'blur'},
-            // { validator: validaePass2 }
-          ]
-        },
-        checked: false
-      };
+        email: '',
+        password: '',
+      }
     },
     methods: {
-      login() {
-        this.$router.replace('/index')
+      onClick() {
+        var that = this;
+        this.$http
+          .post('http://localhost:8080/user/sign_in', {"email": this.email, "password": this.password})
+          .then(function (response) {
+            localStorage.setItem("loginUser", JSON.stringify(response.data.data))
+            that.$router.push("/")
+          })
       }
     }
   }
-
 </script>
 
 <style scoped>
-
+  .bg {
+    background-color: #EEE;
+    width: 100%;
+    height: 800px;
+  }
+  .main {
+    width: 600px;
+    margin: 100px auto 0 420px;
+    padding: 50px 50px 30px;
+    background-color: #fff;
+    border-radius: 4px;
+    box-shadow: 0 0 8px rgba(0, 0, 0, .1);
+    vertical-align: middle;
+    display: inline-block;
+    margin-left: 550px;
+  }
+  .sign-in-btn {
+    width: 300px;
+    height: 40px;
+    border-radius: 50px;
+    margin-left: 100px;
+    margin-top: 30px;
+  }
 </style>
